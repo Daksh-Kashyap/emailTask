@@ -2,19 +2,20 @@
 
 A resilient email sending service built in Node.js with features including:
 
-- Retry logic with exponential backoff  
-- Rate limiting to control email sending frequency  
-- Idempotency to prevent duplicate emails  
-- Fallback provider support  
-- Status tracking for email attempts  
+- Retry logic with exponential backoff
+- Rate limiting to control email sending frequency
+- Idempotency to prevent duplicate emails
+- Fallback provider support
+- Status tracking for email attempts
 
 ---
+
 ## Features
 
-- **Retry & Backoff:** Automatically retries failed email sends with increasing delay.  
-- **Rate Limiting:** Limits the number of emails sent within a time window to avoid spamming.  
-- **Idempotency:** Prevents sending duplicate emails by checking unique email IDs.  
-- **Fallback Provider:** If the primary email provider fails, automatically falls back to a secondary provider.  
+- **Retry & Backoff:** Automatically retries failed email sends with increasing delay.
+- **Rate Limiting:** Limits the number of emails sent within a time window to avoid spamming.
+- **Idempotency:** Prevents sending duplicate emails by checking unique email IDs.
+- **Fallback Provider:** If the primary email provider fails, automatically falls back to a secondary provider.
 - **Status Tracking:** Keeps track of email send attempts and final status (success/failure).
 
 ---
@@ -29,11 +30,11 @@ A resilient email sending service built in Node.js with features including:
 ### Installation
 
 1. Clone the repository:
--bash
+   -bash
    git clone https://github.com/Daksh-Kashyap/emailTask.git
 
 2. Install Dependencies
-npm install
+   npm install
 
 ### Running the services
 
@@ -42,41 +43,44 @@ start the API server by running:
 node server.js
 The server will Listen on port 3000
 
-### API Usage 
+### API Usage
 
 Send Email
+
 - EndPoint: Post/send-email
 - Header: content-Type: application/json
 - **Request Body Example**
 
-{
-  "id": "order123_user456",
-  "to": "someone@example.com",
-  "subject": "Test Email",
-  "body": "Hello from EmailService API"
-}
+![alt text](image-1.png)
 
 - **Successfull Response**
-{
-  "finalStatus": "success",
-  "attempts": [
-    {
-      "provider": "ProviderA",
-      "attempts": 1,
-      "status": "success",
-      "timeStamp": "2025-06-07T10:41:21.357Z"
-    }
-  ]
-}
+
+ ![alt text](image-2.png)
+
+ ## email sent with same id response(idempotency)
+
+ ![alt text](image-3.png)
+
+
+## Running Locally
+
+To run the project locally, use the command:
+
+bash
+- node index.js
+
+# local response
+
+![alt text](image.png)
 
 ### Testing
-- run the test 
+
+- run the test
 - npm test
 
 - Test cover:
 - Successful email sending
 - Rate limiting behavior
-
 
 ### Notes
 
@@ -91,5 +95,5 @@ Send Email
 - Logs and status of all attempts are tracked and returned in API responses.
 
 ### Author
-Daksh Kashyap
 
+Daksh Kashyap
